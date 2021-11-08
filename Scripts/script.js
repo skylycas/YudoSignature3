@@ -16,6 +16,15 @@ $(document).ready(function () {
     }, function () {
         $('.imagecaption', this).slideToggle('slow');
     });
+
+
+    // $("#submit").click(function(){       
+    //     $("form").fadeOut(function(){ 
+    //         var str = $("#customerName").val();          
+    //         $("h2.msg").html("Thank you <em>"+ str +"</em> for shopping with us.");
+    //         $(".msg").fadeIn('slow'); //this is a callback function
+    //     });       
+    // });
 });
 
 // JQuery Ends------------------------------
@@ -36,12 +45,19 @@ app.controller('clothesController', ['$scope', '$cookies', function ($scope, $co
     ]
     $scope.cart = [];
     $scope.total = 0;
+    $scope.customer = [];
 
     if (!angular.isUndefined($cookies.get('total'))) {
         $scope.total = parseFloat($cookies.get('total'));
     }
     if (!angular.isUndefined($cookies.get('cart'))) {
         $scope.cart = $cookies.getObject('cart');
+    }
+    if (!angular.isUndefined($cookies.get('customerCart'))) {
+        $scope.customer = $cookies.getObject('customerCart');
+    }
+    if (!angular.isUndefined($cookies.get('customerName'))) {
+        $scope.customerName = $cookies.get('customerName');
     }
 
     // Add item to Cart
@@ -54,31 +70,7 @@ app.controller('clothesController', ['$scope', '$cookies', function ($scope, $co
             var repeat = false;
             for (var i = 0; i < $scope.cart.length; i++) {
                 if ($scope.cart[i].id === clothing.id) {
-
-                    // //check if the new quantity is less than the existing quantit, if it is less than the existing quantity call the remove function
-                    // if ($scope.cart[i].count > clothing.quantity) {
-                        
-                    //     var index = $scope.cart.indexOf(clothing);
-                    //     $scope.cart.splice(index, i);
-
-                    //     var expireDate = new Date();
-                    //     expireDate.setDate(expireDate.getDate() + 1);
-                    //     $cookies.putObject('cart', $scope.cart, { 'expires': expireDate });
-                    //     $scope.cart = $cookies.getObject('cart');
-
-                    //     $scope.total -= parseFloat($scope.cart[i].price * $scope.cart[i].count);
-                    //     $cookies.put('total', $scope.total, { 'expires': expireDate });
-
-                    //     // clothing.count = clothing.quantity;
-                    //     // $scope.cart.push(clothing);
-                    //     repeat = true;
-                    // }
-                    // else
-                    // {
-                    //     repeat = true;
-                    //     $scope.cart[i].count += clothing.quantity;
-                    // }
-
+                   
                     repeat = true;
                     $scope.cart[i].count += clothing.quantity;
                    
@@ -128,7 +120,75 @@ app.controller('clothesController', ['$scope', '$cookies', function ($scope, $co
 
         $scope.total = 0;
         $cookies.put('total', $scope.total, { 'expires': expireDate });
+
+        $scope.customerName = "";
+        $cookies.put('customerName', $scope.customerName, { 'expires': expireDate });
     };
+
+
+
+    $scope.customerInfo = function (formFullname, formEmail, formAddress1, formAddress2, formCountry, formProvince, formCities) {
+
+        $scope.customerName = formFullname;
+        var expireDate = new Date();
+        expireDate.setDate(expireDate.getDate() + 1);
+        $cookies.put('customerName', $scope.customerName, { 'expires': expireDate });
+
+
+
+        //clear customer detials
+        // $scope.customer.length = 0;
+        
+        // var expireDate = new Date();
+        // expireDate.setDate(expireDate.getDate() + 1);
+        // $cookies.putObject('customerCart', $scope.customer, { 'expires': expireDate });
+        // $scope.customer = $cookies.getObject('customerCart');
+
+        // //add new customer details
+        // $scope.customer.push(customerinfo);
+        // var expireDate = new Date();
+        // expireDate.setDate(expireDate.getDate() + 1);
+        // $cookies.putObject('customerCart', $scope.customer, { 'expires': expireDate });
+        // $scope.customer = $cookies.getObject('customerCart');
+
+        // return $scope.Fname =  $scope.customer.fullname;
+    
+        // $scope.fullname = customer.fullname;
+        // $scope.email = customer.email;
+        // $scope.Address1 = customer.Address1;
+        // $scope.Address2 = customer.Address2;
+        // $scope.country = customer.country;
+        // $scope.province = customer.province;
+        // $scope.cities = customer.cities;
+    };
+
+    $scope.getcustomerInfo = function () {
+
+        if (!angular.isUndefined($cookies.get('customerName'))) {
+            $scope.customerName = $cookies.get('customerName');
+        }
+        else
+        {
+            $scope.customerName = "";
+        }
+
+        if(!($scope.customerName === "")){
+            return $scope.customerName
+        }
+        else{
+            return "No customer name found."
+        }
+
+        // return $scope.customer.fullname;        
+        // $scope.fullname = customer.fullname;
+        // $scope.email = customer.email;
+        // $scope.Address1 = customer.Address1;
+        // $scope.Address2 = customer.Address2;
+        // $scope.country = customer.country;
+        // $scope.province = customer.province;
+        // $scope.cities = customer.cities;
+    };
+
 
     // $scope.addItemtoCart = function(clothing){     
     //   $scope.value = clothing.name;     

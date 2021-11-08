@@ -63,53 +63,19 @@
                 <div id="shoppingHeaders">
                     <h4>1. Shopping Cart</h4>
                 </div>
-                <div id="shoppingHeadersActive">
+                <div id="shoppingHeaders">
                     <h4>2. Shipping Details</h4>
                 </div>
-                <div id="shoppingHeaders">
+                <div id="shoppingHeadersActive">
                     <h4>3. Payment Options</h4>
                 </div>
                 <div id="divListCartandSummary" ng-show="cart.length !== 0">
-                    <div id="cartBoxDiv">
-                        <h2>Shipping Details</h2>
-                        <hr>
-                        <form action="" method="">
-                        <p><input ng-model="formFullname" id="fullName" type="text" placeholder="Full name" required class="formInput"></p> 
-                        <p><input ng-model="formEmail" id="email" type="email" placeholder="Email" class="formInput"></p>
-                        <p><input ng-model="formAddress1" id="Address1" type="text" placeholder="Address1" class="formInput"></p>
-                        <p><input ng-model="formAddress2" id="Address2" type="text" placeholder="Address2" class="formInput"></p>
-                        <p><select id="country" name="country" ng-model="formCountry">
-                            <option value="Canada" selected>Canada</option>
-                            <option value="USA">USA</option>
-                            <option value="Nigeria">Nigeria</option>
-                            <option value="England">England</option>
-                          </select>
-                        </p>
-
-                        <p><select id="province" name="province" ng-model="formProvince">
-                            <option value="Ontario" selected>Ontario</option>
-                            <option value="Alberta">Alberta</option>
-                            <option value="Manitoba">Manitoba</option>
-                            <option value="Nunavut">Nunavut</option>
-                          </select>
-                        </p>
-
-                        <p><select id="cities" name="cities" ng-model="formCities">
-                            <option value="Toronto" selected>Toronto</option>
-                            <option value="Brampton">Brampton</option>
-                            <option value="Malton">Malton</option>
-                            <option value="Hamilton">Hamilton</option>
-                          </select>
-                        </p>
-                        <p>
-                                <a href="payment.html"  ng-click="customerInfo(formFullname, formEmail, formAddress1, formAddress2, formCountry, formProvince, formCities)">Next
-                                <!-- <input type="button" value="Next" id="button"> -->
-                               </a>
-                        </p>                         
-                        </form>
+                    <div id="cartBoxDiv">                       
+                        <h2 id="customerName">Thank you {{getcustomerInfo()}} for shopping with us</h2>
                         
+                        </form>
                     </div>
-                    <div id="listSummary">
+                    <!-- <div id="listSummary">
                         <h2>Summary</h2>
                         <hr>
                         <div id="sumheaderDiv">
@@ -139,15 +105,15 @@
                         <div id="sumValDiv">
                             <h3>{{total + (total * 0.13) | currency: '₦'}}</h3>
                         </div>
-                    </div>
+                    </div> -->
                     <br>
                     <br>
                     <div>                           
-                           <a href="viewcart.html">
-                            <input type="Submit" value="Back">
+                           <a href="index.html">
+                            <input type="Submit" value="Back to Home">
                            </a>
                     </div>
-                </div>
+                </div>               
             </div>
         </main>
         <footer>

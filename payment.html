@@ -63,51 +63,48 @@
                 <div id="shoppingHeaders">
                     <h4>1. Shopping Cart</h4>
                 </div>
-                <div id="shoppingHeadersActive">
+                <div id="shoppingHeaders">
                     <h4>2. Shipping Details</h4>
                 </div>
-                <div id="shoppingHeaders">
+                <div id="shoppingHeadersActive">
                     <h4>3. Payment Options</h4>
                 </div>
                 <div id="divListCartandSummary" ng-show="cart.length !== 0">
                     <div id="cartBoxDiv">
-                        <h2>Shipping Details</h2>
+                        <h2>Payment</h2>
                         <hr>
+                        <h2 id="customerName">{{getcustomerInfo()}}</h2>
                         <form action="" method="">
-                        <p><input ng-model="formFullname" id="fullName" type="text" placeholder="Full name" required class="formInput"></p> 
-                        <p><input ng-model="formEmail" id="email" type="email" placeholder="Email" class="formInput"></p>
-                        <p><input ng-model="formAddress1" id="Address1" type="text" placeholder="Address1" class="formInput"></p>
-                        <p><input ng-model="formAddress2" id="Address2" type="text" placeholder="Address2" class="formInput"></p>
-                        <p><select id="country" name="country" ng-model="formCountry">
-                            <option value="Canada" selected>Canada</option>
-                            <option value="USA">USA</option>
-                            <option value="Nigeria">Nigeria</option>
-                            <option value="England">England</option>
-                          </select>
-                        </p>
-
-                        <p><select id="province" name="province" ng-model="formProvince">
-                            <option value="Ontario" selected>Ontario</option>
-                            <option value="Alberta">Alberta</option>
-                            <option value="Manitoba">Manitoba</option>
-                            <option value="Nunavut">Nunavut</option>
-                          </select>
-                        </p>
-
-                        <p><select id="cities" name="cities" ng-model="formCities">
-                            <option value="Toronto" selected>Toronto</option>
-                            <option value="Brampton">Brampton</option>
-                            <option value="Malton">Malton</option>
-                            <option value="Hamilton">Hamilton</option>
-                          </select>
-                        </p>
-                        <p>
-                                <a href="payment.html"  ng-click="customerInfo(formFullname, formEmail, formAddress1, formAddress2, formCountry, formProvince, formCities)">Next
-                                <!-- <input type="button" value="Next" id="button"> -->
-                               </a>
-                        </p>                         
+                             <div id="formitemDiv">
+                                 <p>
+                                    <input type="radio" name="pamentMethod" id="pamentMethod" value="creditCard" checked>
+                                 </p>
+                             </div>
+                             <div id="formitemDiv">
+                                 <h5>Credit Card</h5>
+                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi elementum ipsum bibendum nisl rhoncus faucibus</p>                                 
+                             </div>
+                             <br>
+                             <br>
+                             <div id="formitemDiv">
+                                 <input type="text" name="" id="creditCardNubmer" placeholder="0000-0000-0000-0000" required>
+                             </div>
+                             <div id="formitemDiv">
+                                <input type="text" name="" id="creditCardMMYY" placeholder="MM/YY" required>
+                            </div>
+                            <div id="formitemDiv">
+                                <input type="text" name="" id="creditCardCvv" placeholder="CVV" required>
+                            </div>
+                            <br>
+                            <br>
+                            <div id="formitemDiv">
+                                <input type="text" name="" id="creditCardName" placeholder="Card Holder Name" required>
+                            </div>
+                            <br>
+                            <br>
+                            <!-- <input type="submit" name="" id="submit"> -->
+                            <a href="thankyou.html"> Make Payment </a>
                         </form>
-                        
                     </div>
                     <div id="listSummary">
                         <h2>Summary</h2>
@@ -147,7 +144,7 @@
                             <input type="Submit" value="Back">
                            </a>
                     </div>
-                </div>
+                </div>               
             </div>
         </main>
         <footer>
